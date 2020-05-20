@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from pandas_datareader import data as wb
 
-Stock = 'E28.SI'
+Stock = 'AWX.SI'
 Date = '2019-08-1'
 
 Stock_Data = wb.DataReader(Stock, data_source = 'yahoo', start = Date)
