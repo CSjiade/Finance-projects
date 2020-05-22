@@ -2,11 +2,8 @@
 
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
 from pandas_datareader import data as wb
-
-
-
+import plotly.express as px
 
 
 Stock = 'AWX.SI'
@@ -52,8 +49,8 @@ class Strategy:
         return self.diff_trend_day
 
 t_name = 'mav'
-long_run = 25
-short_run = 1
+long_run = 10
+short_run = 5
 
 s = Strategy()
 dff['smav']= s.smav()
@@ -115,8 +112,6 @@ dff['end_pos']= p.end_pos()
 dff['pnl'] = dff['end_bal'] + (Portfolio().end_pos()*Strategy().trade_price*Portfolio().contract_size)
 
 
-dff1=dff.set_index('Date')
-plt.plot(dff1['pnl'])
+fig = px.line(dff,x='Date',y='pnl',)
 
-
-plt.show()
+fig.show()
