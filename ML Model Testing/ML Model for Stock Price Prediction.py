@@ -12,8 +12,6 @@ from sklearn.model_selection import train_test_split
 import talib
 
 
-
-
 Stock = "MSFT"
 Date = '2010-01-01'
 end = '2020-05-25'
