@@ -1,6 +1,4 @@
-## Simple Moving Average Calculator
-import pandas as pd
-import numpy as np
+## A Simple Moving Average Calculator
 import matplotlib.pyplot as plt
 from pandas_datareader import data as wb
 

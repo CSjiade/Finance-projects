@@ -35,7 +35,7 @@ std_investment = Start_cash * port_std
 
 conf_level = 0.05  # set at 95% confidence level
 var_95 = norm.ppf(conf_level, mean_investment, std_investment)
-var = Start_cash - var_95  # Var
+var = Start_cash - var_95  # VAR value
 
 
 Weighted_Daily_returns = returns.dropna()*Weights
