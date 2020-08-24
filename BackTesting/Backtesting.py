@@ -5,13 +5,12 @@ import numpy as np
 from pandas_datareader import data as wb
 import plotly.express as px
 
-
 Stock = 'AWX.SI'
 Date = '2019-01-01'
-df = wb.DataReader(Stock, data_source = 'yahoo', start = Date)
+df = wb.DataReader(Stock, data_source = 'yahoo', start = Date,)
 data_source =r'Desktop:\datafile\AWX.SI.csv'
 df.to_csv(data_source)
-dff = pd.read_csv(r'Desktop:\datafile\AWX.SI.csv')
+dff = pd.read_csv(r'Desktop:\datafile\AWX.SI.csv',parse_dates=True,squeeze=True)
 
 
 class Strategy:
@@ -48,8 +47,8 @@ class Strategy:
         return self.diff_trend_day
 
 t_name = 'mav'
-long_run = 10
-short_run = 5
+long_run = 5
+short_run = 1
 
 s = Strategy()
 dff['smav']= s.smav()
@@ -57,6 +56,10 @@ dff['lmav'] = s.lmav()
 dff['trend_day']=s.trend_day()
 dff['prev_trend_day']=s.prev_trend_day()
 dff['diff_trend_day'] = s.diff_trend_day()
+
+
+
+
 
 class Signal:
     def __init_(self):
@@ -73,11 +76,15 @@ ts = Signal()
 dff['trade_signal'] = ts.trade_signal()
 dff['order'] = ts.order()
 
+
+
+
+
 class Portfolio:
     def __init__(self):
         self.lot_size_long =1
         self.lot_size_short = 1
-        self.contract_size =2000
+        self.contract_size =3000
         self.initial_cash = 10000
         self.long_amt = (-1)*np.where(Signal().order()==1,self.lot_size_long*self.contract_size*Strategy().trade_price,0)
         self.short_amt = (1)*np.where(Signal().order()==-1,self.lot_size_short*self.contract_size*Strategy().trade_price,0)
@@ -103,6 +110,7 @@ dff['end_pos']= p.end_pos()
 dff['pnl'] = dff['end_bal'] + (Portfolio().end_pos()*Strategy().trade_price*Portfolio().contract_size)
 
 
-fig = px.line(dff, x='Date', y='pnl',)
+
+fig = px.line(dff,x='Date',y='pnl',)
 
 fig.show()
