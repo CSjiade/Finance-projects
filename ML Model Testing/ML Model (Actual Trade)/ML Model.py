@@ -16,14 +16,10 @@ Stock = "LSCC"
 Date = '2010-01-01'
 end = '2020-05-29'      # date set for model training will be from starting date to 29 May
 
-
-
 df = wb.DataReader(Stock, data_source = 'yahoo', start = Date,end=end)
 data_source ="/Users/lianjiade/Desktop/Stock_Data/LSCC.csv"
 df.to_csv(data_source)
 df = pd.read_csv("/Users/lianjiade/Desktop/Stock_Data/LSCC.csv",parse_dates=True,squeeze=True)
-
-
 data = df[['Close']]
 
 
@@ -33,7 +29,6 @@ future = 10
 
 #Creating a future Stock Price Column which will be the model target
 data['Future'] = df[['Close']].shift(-future)
-
 
 
 ##  Add RSI14
