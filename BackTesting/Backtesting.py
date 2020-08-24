@@ -14,7 +14,6 @@ df.to_csv(data_source)
 dff = pd.read_csv(r'Desktop:\datafile\AWX.SI.csv')
 
 
-
 class Strategy:
 
     def __init__(self):
@@ -59,10 +58,6 @@ dff['trend_day']=s.trend_day()
 dff['prev_trend_day']=s.prev_trend_day()
 dff['diff_trend_day'] = s.diff_trend_day()
 
-
-
-
-
 class Signal:
     def __init_(self):
         pass
@@ -77,10 +72,6 @@ class Signal:
 ts = Signal()
 dff['trade_signal'] = ts.trade_signal()
 dff['order'] = ts.order()
-
-
-
-
 
 class Portfolio:
     def __init__(self):
@@ -112,6 +103,6 @@ dff['end_pos']= p.end_pos()
 dff['pnl'] = dff['end_bal'] + (Portfolio().end_pos()*Strategy().trade_price*Portfolio().contract_size)
 
 
-fig = px.line(dff,x='Date',y='pnl',)
+fig = px.line(dff, x='Date', y='pnl',)
 
 fig.show()
