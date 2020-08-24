@@ -1,7 +1,5 @@
 # Calculating Historical Var at 95% confidence level of a Portfolio
 
-# Calculating Historical Var at 95% confidence level of a Portfolio
-
 import numpy as np
 from pandas_datareader import data as wb
 from scipy.stats import norm
@@ -48,6 +46,5 @@ plt.legend()
 plt.title("Portfolio Daily Returns from " + start + " to " + end)
 plt.xlabel("Daily Returns in %")
 plt.ylabel("Frequency")
-
 plt.show()
 
