@@ -15,6 +15,4 @@ plt.plot(Close_avg_25)
 plt.plot(Price_Close)
 plt.plot(Close_avg_50)
 plt.legend([Stock + ' Close_avg_25', Stock + ' Price_Close', Stock + ' Close_avg_50']);
-
-
 plt.show()
